@@ -4,6 +4,4 @@
  * 实际工作中，我们都是使用 SpringBoot 进行业务开发，本目录总结三种 Filter 用法
  * 其实还有第四种，web.xml配置，不过用 SpringBoot 的自动装配或者 JavaConfig 更方便
  */
-
-
 package com.dreamkite.demo.filter;

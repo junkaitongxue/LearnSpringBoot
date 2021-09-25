@@ -1,5 +1,6 @@
 package com.dreamkite.demo.filter;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -13,10 +14,11 @@ import java.io.IOException;
  * 该注解方式支持对 Filter 匹配指定URL，但是不支持指定 Filter 的执行顺序。
  */
 @WebFilter(urlPatterns = "/*")
+@Slf4j
 public class MyFilter01 implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        System.out.println("MyFilter01");
+        log.info("MyFilter01");
         // 要继续处理请求，必须添加 filterChain.doFilter()
         filterChain.doFilter(servletRequest,servletResponse);
     }

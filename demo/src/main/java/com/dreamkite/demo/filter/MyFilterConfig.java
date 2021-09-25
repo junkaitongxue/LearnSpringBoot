@@ -1,6 +1,7 @@
 package com.dreamkite.demo.filter;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,24 +13,29 @@ import org.springframework.context.annotation.Configuration;
  *
  */
 @Configuration
+@Slf4j
 public class MyFilterConfig {
     @Bean
     public FilterRegistrationBean registerMyFilter(){
+        log.info("start to registerMyFilter");
         FilterRegistrationBean<MyFilter00> bean = new FilterRegistrationBean<>();
         bean.setOrder(1);
         bean.setFilter(new MyFilter00());
-        // 匹配"/hello/"下面的所有url
-        bean.addUrlPatterns("/hello/*");
+        // 匹配所有url
+        bean.addUrlPatterns("/*");
+        log.info("end to registerMyFilter");
         return bean;
     }
 
     @Bean
     public FilterRegistrationBean registerMyAnotherFilter(){
+        log.info("start to registerMyAnotherFilter");
         FilterRegistrationBean<MyFilter01> bean = new FilterRegistrationBean<>();
         bean.setOrder(2);
         bean.setFilter(new MyFilter01());
         // 匹配所有url
         bean.addUrlPatterns("/*");
+        log.info("end to registerMyAnotherFilter");
         return bean;
     }
 }
