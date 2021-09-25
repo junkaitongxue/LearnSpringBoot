@@ -1,4 +1,4 @@
-package com.dreamkite.demo.HandlerInterceptor;
+package com.dreamkite.demo.handlerInterceptor;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;

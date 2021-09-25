@@ -1,4 +1,4 @@
-package com.dreamkite.demo.HandlerInterceptor;
+package com.dreamkite.demo.handlerInterceptor;
 
 import java.lang.annotation.*;
 
