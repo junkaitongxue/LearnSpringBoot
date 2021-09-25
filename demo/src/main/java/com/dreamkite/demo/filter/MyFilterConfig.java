@@ -22,7 +22,7 @@ public class MyFilterConfig {
         bean.setOrder(1);
         bean.setFilter(new MyFilter00());
         // 匹配所有url
-        bean.addUrlPatterns("/*");
+        bean.addUrlPatterns("/filter/*");
         log.info("end to registerMyFilter");
         return bean;
     }
@@ -34,7 +34,7 @@ public class MyFilterConfig {
         bean.setOrder(2);
         bean.setFilter(new MyFilter01());
         // 匹配所有url
-        bean.addUrlPatterns("/*");
+        bean.addUrlPatterns("/filter/*");
         log.info("end to registerMyAnotherFilter");
         return bean;
     }

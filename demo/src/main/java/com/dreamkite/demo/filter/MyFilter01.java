@@ -13,7 +13,7 @@ import java.io.IOException;
  * 注意： 需要在启动类上增加@ServletComponentScan("com.dreamkite.demo.filter")注解
  * 该注解方式支持对 Filter 匹配指定URL，但是不支持指定 Filter 的执行顺序。
  */
-@WebFilter(urlPatterns = "/*")
+@WebFilter(urlPatterns = "/filter/*")
 @Slf4j
 public class MyFilter01 implements Filter {
     @Override
