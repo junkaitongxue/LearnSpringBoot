@@ -4,7 +4,10 @@ import com.dreamkite.demo.model.AModel;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * 1.@ApiParam ，是注解api的参数 ，也就是用于swagger提供开发者文档 ，文档中生成的注释内容 。
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Api(value = "一个控制器")
 @RestController
+@Slf4j
 public class AController {
 
 
@@ -43,13 +47,24 @@ public class AController {
     /**
      * 浏览器输入：http://localhost:8080/hi/model/1
      *
-     * @return hi
      */
     @ApiOperation(value = "测试hiWithModelRet", notes = "测试hiWithModelRet", httpMethod = "GET")
     @RequestMapping(value = "/hi/model/{id}", method = RequestMethod.GET)
     public AModel hiWithModelRet(@ApiParam(name = "id", value = "model Id", required = true) @PathVariable String id) {
-        AModel aModel = new AModel();
+        AModel aModel = new AModel(id, "");
         aModel.setId(id);
         return aModel;
+    }
+
+    /**
+     * usage: 浏览器输入：http://localhost:8080/hi/model/1
+     * 注意：应该要加上@Valid ,否则不会验证AModel的参数是否符合@NonNull!！
+     *
+     */
+    @ApiOperation(value = "测试hiWithModeBody", notes = "测试hiWithModeBody", httpMethod = "POST")
+    @RequestMapping(value = "/hi/model", method = RequestMethod.POST)
+    public String hiWithModeBody(@Valid @RequestBody AModel model) {
+        log.info("Start to update " + model.toString());
+        return "success";
     }
 }
