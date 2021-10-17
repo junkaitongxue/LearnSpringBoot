@@ -25,8 +25,8 @@ public class MyTask {
     @Autowired
     private TaskService taskService;
 
-    //固定时间段执行,  从上次调用结束到下一次调用之间的固定时间（以毫秒为单位）
-    //http://localhost:8080/task/starTask
+    // 固定时间段执行,  从上次调用结束到下一次调用之间的固定时间（以毫秒为单位）
+    // http://localhost:8080/task/starTask
     @Scheduled(fixedDelay = 10 * 1000)
     @GetMapping("/starTask")
     public String starTask() {
@@ -52,14 +52,18 @@ public class MyTask {
         log.info("end to execute long task...");
     }
 
-    //固定时间点执行, 该参数为cron表达式，从左到右: [秒] [分] [小时] [日] [月] [周]
+    // 固定时间点执行, 该参数为cron表达式，从左到右: [秒] [分] [小时] [日] [月] [周]
+    // 在线生成对应的表达式 ==》 https://tool.lu/crontab/
     @Scheduled(cron = "0 3 0 4 * ?")
     public void starTask1() {
+        log.info("start to start task2...");
+        String ret = taskService.longTaskWithRet();
+
         log.info("execute task1...");
     }
 
 
-    //两次调用之间固定的毫秒数,  从上次开始调用到下一次开始调用之间的固定时间（以毫秒为单位）
+    // 两次调用之间固定的毫秒数,  从上次开始调用到下一次开始调用之间的固定时间（以毫秒为单位）
     @Scheduled(fixedRate = 600 * 1000)
     public void starTask2() {
         log.info("start to start task2...");
@@ -67,13 +71,12 @@ public class MyTask {
         log.info("end to start task2...");
     }
 
-    @SneakyThrows
-//    @Async
-    void longTask2() {
-        log.info("start to execute task2...");
-        TimeUnit.SECONDS.sleep(10);
-        log.info("end to execute task2...");
+
+    // 两次调用之间固定的毫秒数,  从上次开始调用到下一次开始调用之间的固定时间（以毫秒为单位）
+    @Scheduled(fixedRate = 10 * 1000)
+    public void starTask3() {
+        log.info("start to start task3...");
+        String ret = taskService.longTaskWithRet();
+        log.info("end to start task3... " + ret);
     }
-
-
 }
