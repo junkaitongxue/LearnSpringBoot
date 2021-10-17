@@ -12,7 +12,8 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
+//import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * usage: 浏览器输入 http://{{ip}}:{{port}}/doc.html#/home
@@ -28,8 +29,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * </code>
  */
 @Configuration
-@EnableSwagger2
-@EnableKnife4j
+@EnableSwagger2WebMvc
 @Import(BeanValidatorPluginsConfiguration.class)
 public class SwaggerConfig {
     @Bean

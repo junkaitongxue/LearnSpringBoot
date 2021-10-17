@@ -27,7 +27,7 @@ public class MyTask {
 
     // 固定时间段执行,  从上次调用结束到下一次调用之间的固定时间（以毫秒为单位）
     // http://localhost:8080/task/starTask
-    @Scheduled(fixedDelay = 10 * 1000)
+    @Scheduled(fixedDelay = 60 * 60 * 1000)
     @GetMapping("/starTask")
     public String starTask() {
         log.info("start to start task...");
@@ -64,7 +64,7 @@ public class MyTask {
 
 
     // 两次调用之间固定的毫秒数,  从上次开始调用到下一次开始调用之间的固定时间（以毫秒为单位）
-    @Scheduled(fixedRate = 600 * 1000)
+    @Scheduled(fixedRate = 60 * 60 * 1000)
     public void starTask2() {
         log.info("start to start task2...");
         taskService.longTaskWithSpecialThreadPool();
@@ -73,7 +73,7 @@ public class MyTask {
 
 
     // 两次调用之间固定的毫秒数,  从上次开始调用到下一次开始调用之间的固定时间（以毫秒为单位）
-    @Scheduled(fixedRate = 10 * 1000)
+    @Scheduled(fixedRate = 60 * 60 * 1000)
     public void starTask3() {
         log.info("start to start task3...");
         String ret = taskService.longTaskWithRet();
