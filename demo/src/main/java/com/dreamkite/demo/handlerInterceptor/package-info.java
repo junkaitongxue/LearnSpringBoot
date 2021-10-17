@@ -7,4 +7,4 @@
  *
  * @author dreamkite
  */
-package com.dreamkite.demo.HandlerInterceptor;
+package com.dreamkite.demo.handlerInterceptor;
