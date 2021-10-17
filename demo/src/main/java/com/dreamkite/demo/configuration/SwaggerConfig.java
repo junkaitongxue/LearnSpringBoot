@@ -15,12 +15,17 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
+ * usage: 浏览器输入 http://{{ip}}:{{port}}/doc.html#/home
+ * example:  http://127.0.0.1:8080/doc.html#/home
+ * <p>
  * 简单说knife4j就swagger的升级版API文档的一个框架,但是用起来比swagger方便多了，UI更加丰富。
  * 使用一个配置类来承载这样就不需要再springboot启动服务的地方进行注解，如下
+ * <code>
  * @EnableSwagger2
  * @EnableKnife4j
  * @SpringBootApplication
  * //...
+ * </code>
  */
 @Configuration
 @EnableSwagger2
@@ -40,7 +45,7 @@ public class SwaggerConfig {
 
     /**
      * 设置api信息
-     *
+     * <p>
      * .contact    设置文档的联系方式
      * .title  设置文档的标题
      * .description    设置文档的描述

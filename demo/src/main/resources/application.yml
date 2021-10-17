@@ -1,3 +1,8 @@
 server:
   port: 8080
 
+
+# 是否停用Knife4j文档
+knife4j:
+  production: false
+
