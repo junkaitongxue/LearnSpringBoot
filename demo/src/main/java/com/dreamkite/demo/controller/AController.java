@@ -1,5 +1,6 @@
 package com.dreamkite.demo.controller;
 
+import com.dreamkite.demo.model.AModel;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -39,4 +40,16 @@ public class AController {
         return "hi, springboot. I am " + myName + ".";
     }
 
+    /**
+     * 浏览器输入：http://localhost:8080/hi/model/1
+     *
+     * @return hi
+     */
+    @ApiOperation(value = "测试hiWithModelRet", notes = "测试hiWithModelRet", httpMethod = "GET")
+    @RequestMapping(value = "/hi/model/{id}", method = RequestMethod.GET)
+    public AModel hiWithModelRet(@ApiParam(name = "id", value = "model Id", required = true) @PathVariable String id) {
+        AModel aModel = new AModel();
+        aModel.setId(id);
+        return aModel;
+    }
 }
