@@ -1,8 +1,29 @@
+spring:
+  profiles:
+    active: test
+
 server:
   port: 8080
-
 
 # 是否停用Knife4j文档
 knife4j:
   production: false
+
+# 日志配置
+logging:
+  level:
+    root: info
+---
+spring:
+  profiles:dev
+
+
+---
+spring:
+  profiles:test
+
+
+---
+spring:
+  profiles:prod
 
