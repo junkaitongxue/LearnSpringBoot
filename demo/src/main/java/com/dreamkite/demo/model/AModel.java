@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+import javax.validation.constraints.NotBlank;
+
 @ApiModel("一个普通的Web模型对象")
 @Data
 //@NoArgsConstructor
@@ -15,6 +17,6 @@ public class AModel {
     String id;
 
     @ApiModelProperty("模型名")
-    @NonNull
+    @NotBlank
     String name;
 }
