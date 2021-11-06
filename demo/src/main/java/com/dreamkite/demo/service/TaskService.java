@@ -27,7 +27,6 @@ public class TaskService {
     public void longTaskWithSpecialThreadPool() {
         log.info("start to execute long task...");
         TimeUnit.SECONDS.sleep(10);
-
         log.info("end to execute long task...");
     }
 
