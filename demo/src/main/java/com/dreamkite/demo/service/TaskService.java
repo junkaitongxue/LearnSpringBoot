@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class TaskService {
     // 如何生效Async?
-    // 1、如果需要使用@Async达到异步执行的效果，需要在入口类上面声明@EnableAsync!否则配置了不生效
+    // 1、如果需要使用@Async达到异步执行的效果，需要在入口类上面声明@EnableAsync!否则配置了不生效（或者配置类中进行承载，如AsyncConfig）
     // 2、新建一个类，用@Service等进行注解，对需要异步的函数添加@Async，如需要执行执行的进程池则可使用
     // 注意：异步的情况不要带返回值；
     @Async

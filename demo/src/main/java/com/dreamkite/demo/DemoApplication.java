@@ -10,7 +10,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 // 不使用@ComponentScan去定义的话默认则是使用当前启动类的父路径：({"com.dreamkite.demo"})
 @ServletComponentScan("com.dreamkite.demo.filter")
 @EnableScheduling
-@EnableAsync
 @SpringBootApplication
 public class DemoApplication {
 
