@@ -1,6 +1,16 @@
 spring:
   profiles:
     active: test
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/learn_db
+    username: admin
+    password: 123456
+    #启动时需要初始化的建表语句
+    schema: classpath:schema-mysql.sql
+  sql:
+    init:
+      schema-locations: classpath:sql/init/createDB.sql
 
 server:
   port: 8080
