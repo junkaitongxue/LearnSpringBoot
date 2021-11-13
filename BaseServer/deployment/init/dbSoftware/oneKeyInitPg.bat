@@ -1,0 +1,1 @@
+D:\Program Files\PostgreSQL\pgsql\bin\initdb.exe -U admin -W --locale=C -E UTF8 -D "D:\ProgramData\Pg"
