@@ -1,4 +1,3 @@
-
 CREATE DATABASE learn_db;
 
 CREATE TABLE IF NOT EXISTS t_persons
@@ -10,6 +9,7 @@ CREATE TABLE IF NOT EXISTS t_persons
     City      varchar(255),
     PRIMARY KEY (Id_P)
 );
+COMMENT on table t_paper is 'The persons     table';
 
 CREATE TABLE IF NOT EXISTS t_paper
 (
@@ -18,3 +18,5 @@ CREATE TABLE IF NOT EXISTS t_paper
     number varchar(255),
     detail varchar(255)
 );
+
+COMMENT on table t_paper is 'The paper table';
