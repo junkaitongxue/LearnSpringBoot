@@ -1,3 +1,16 @@
+
+CREATE DATABASE learn_db;
+
+CREATE TABLE IF NOT EXISTS t_persons
+(
+    Id_P      varchar(255) NOT NULL,
+    LastName  varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Address   varchar(255),
+    City      varchar(255),
+    PRIMARY KEY (Id_P)
+);
+
 CREATE TABLE IF NOT EXISTS t_paper
 (
     paper_id serial PRIMARY KEY,
