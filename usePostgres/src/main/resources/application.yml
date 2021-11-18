@@ -18,5 +18,6 @@ spring:
       password: 123456
       platform: pg
       schema-locations: classpath:sql/init/createDB-{{platform}}.sql
-      mode: always
+#      mode: always # 如果启动springboot要执行记得开启always， 关闭下面的never
+      mode: NEVER
       separator: ;
