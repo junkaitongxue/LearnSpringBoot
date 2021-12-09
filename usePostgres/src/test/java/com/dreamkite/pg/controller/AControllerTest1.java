@@ -7,28 +7,30 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 /**
- * 测试mock
+ * 测试spy
  */
 @ActiveProfiles({"test"})
 @SpringBootTest(classes = {UsePgApplication.class})
 @ExtendWith(SpringExtension.class)
 @ExtendWith({MockitoExtension.class})
-class AControllerTest {
+class AControllerTest1 {
 
     @Autowired
     @InjectMocks
     private AController aController;
 
-    @Mock
+    @Spy
     private PersonService personService;
 
     @Test
@@ -40,6 +42,6 @@ class AControllerTest {
 
     @Test
     void bye() {
-        assertNull(aController.bye());
+        assertEquals("bye", aController.bye());
     }
 }

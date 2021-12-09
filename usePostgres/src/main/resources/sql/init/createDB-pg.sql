@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS t_persons
     City      varchar(255),
     PRIMARY KEY (Id_P)
 );
-COMMENT on table t_paper is 'The persons     table';
+COMMENT on table t_persons is 'The persons table';
 
 CREATE TABLE IF NOT EXISTS t_paper
 (

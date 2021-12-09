@@ -21,3 +21,10 @@ spring:
 #      mode: always # 如果启动springboot要执行记得开启always， 关闭下面的never
       mode: NEVER
       separator: ;
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.dreamkite.pg.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    call-setters-on-nulls: true
