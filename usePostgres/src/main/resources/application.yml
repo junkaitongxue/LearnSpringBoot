@@ -28,3 +28,10 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
     call-setters-on-nulls: true
+
+logging:
+   level:
+     com.dreamkite.pg.dao: debug
+
+   pattern:
+     level: DEBUG

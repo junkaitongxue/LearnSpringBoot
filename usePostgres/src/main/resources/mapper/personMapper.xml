@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dreamkite.pg.dao.PersonDao">
-
-
     <select id="queryPersonById" resultType="com.dreamkite.pg.entity.Person">
-<!--    <select id="queryPersonById" resultType="Person">-->
+        <!--    <select id="queryPersonById" resultType="Person">-->
         select *
         from t_persons
         where Id_P = #{id}
     </select>
 
-    <insert id="insertPerson" >
-        INSERT INTO t_paper(Id_P, LastName, FirstName, Address, City) VALUE (#{id}, #{lastName}, #{firstName}, #{address}, #{city})
+    <insert id="insertPerson">
+        INSERT INTO t_persons (Id_P, LastName, FirstName, Address, City)
+                VALUES (#{id}, #{lastName}, #{firstName}, #{address}, #{city})
     </insert>
 
+    <select id="queryFirstNameById" resultType="java.lang.String">
+
+    </select>
 </mapper>
