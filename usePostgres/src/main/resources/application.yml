@@ -5,6 +5,28 @@ server:
 spring:
   application:
     name: userPg
+  profiles:
+    active: testPg
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.dreamkite.pg.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    call-setters-on-nulls: true
+
+logging:
+  level:
+    com.dreamkite.pg.dao: debug
+  pattern:
+    level: DEBUG
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: test
   #初始化基本的配置项
   datasource:
     url: jdbc:postgresql://127.0.0.1:5432/learn_db
@@ -22,16 +44,4 @@ spring:
       mode: NEVER
       separator: ;
 
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.dreamkite.pg.entity
-  configuration:
-    map-underscore-to-camel-case: true
-    call-setters-on-nulls: true
 
-logging:
-   level:
-     com.dreamkite.pg.dao: debug
-
-   pattern:
-     level: DEBUG

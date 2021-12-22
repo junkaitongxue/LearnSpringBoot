@@ -1,4 +1,4 @@
-CREATE DATABASE learn_db;
+-- CREATE DATABASE learn_db;
 
 CREATE TABLE IF NOT EXISTS t_persons
 (

@@ -23,6 +23,10 @@ public class PersonService {
         personDao.insertPerson(id, lastName, firstName, address, city);
     }
 
+    public void delete(String id) {
+        personDao.deletePerson(id);
+    }
+
     public Person queryPersonById(String id) {
         return personDao.queryPersonById(id);
     }

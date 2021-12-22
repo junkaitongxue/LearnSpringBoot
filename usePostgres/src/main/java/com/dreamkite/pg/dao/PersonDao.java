@@ -15,4 +15,5 @@ public interface PersonDao {
     void insertPerson(@Param("id") String id, @Param("lastName") String lastName, @Param("firstName") String firstName,
                       @Param("address") String address, @Param("city") String city);
 
+    void deletePerson(String id);
 }

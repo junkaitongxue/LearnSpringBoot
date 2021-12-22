@@ -20,4 +20,8 @@
     <select id="queryById" resultType="java.lang.String">
         select * from t_persons where id_p = #{id,jdbcType=VARCHAR}
     </select>
+
+    <delete id="deletePerson">
+        delete from t_persons where id_p = #{id,jdbcType=VARCHAR}
+    </delete>
 </mapper>
