@@ -16,4 +16,8 @@
     <select id="queryFirstNameById" resultType="java.lang.String">
 
     </select>
+
+    <select id="queryById" resultType="java.lang.String">
+        select * from t_persons where id_p = #{id,jdbcType=VARCHAR}
+    </select>
 </mapper>

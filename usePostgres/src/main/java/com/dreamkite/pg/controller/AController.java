@@ -1,6 +1,7 @@
 package com.dreamkite.pg.controller;
 
 import com.dreamkite.pg.dao.PersonDao;
+import com.dreamkite.pg.entity.Person;
 import com.dreamkite.pg.feign.CommonFeign;
 import com.dreamkite.pg.service.PaperService;
 import com.dreamkite.pg.service.PersonService;
@@ -63,5 +64,13 @@ public class AController {
     }
 
 
+    /**
+     * @return result
+     */
+    @GetMapping("/person/get/{id}")
+    public ResponseEntity personSelectById(@PathVariable("id") String id) {
+        Person person = personService.queryPersonById(id);
+        return ResponseEntity.ok().body(person);
+    }
 
 }
