@@ -5,5 +5,5 @@ import org.springframework.context.annotation.Profile;
 
 @SpringBootTest(classes={UsePgApplication.class})
 @Profile(value="testPg")
-public class MockPgDao {
+public class TestPgDao {
 }

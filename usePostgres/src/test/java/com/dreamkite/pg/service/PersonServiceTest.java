@@ -1,12 +1,12 @@
 package com.dreamkite.pg.service;
 
-import com.dreamkite.pg.MockPgDao;
+import com.dreamkite.pg.TestPgDao;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Slf4j
-class PersonServiceTest extends MockPgDao {
+class PersonServiceTest extends TestPgDao {
     @Autowired
     PersonService personService;
 
