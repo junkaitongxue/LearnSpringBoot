@@ -13,6 +13,21 @@
                 VALUES (#{id}, #{lastName}, #{firstName}, #{address}, #{city})
     </insert>
 
+    <insert id="insertPerson1" useGeneratedKeys="true">
+        INSERT INTO t_persons (LastName, FirstName, Address, City)
+        VALUES (#{lastName}, #{firstName}, #{address}, #{city})
+    </insert>
+
+    <insert id="batchInsertPerson" parameterType="list">
+        INSERT INTO t_persons (LastName, FirstName, Address, City)
+        VALUES
+        <foreach collection="personList" item="item" index="index" separator=",">
+            (
+            #{item.lastName}, #{item.firstName}, #{address}, #{city}
+            )
+        </foreach>
+    </insert>
+
     <select id="queryFirstNameById" resultType="java.lang.String">
 
     </select>

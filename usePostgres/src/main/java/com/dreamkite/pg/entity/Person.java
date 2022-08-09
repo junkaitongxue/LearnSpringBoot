@@ -1,5 +1,6 @@
 package com.dreamkite.pg.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
@@ -10,4 +11,11 @@ public class Person {
     String firstName;
     String address;
     String city;
+
+    public Person(String firstName, String lastName, String address, String city) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.city = city;
+    }
 }

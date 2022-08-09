@@ -2,7 +2,7 @@
 
 CREATE TABLE IF NOT EXISTS t_persons
 (
-    Id_P      varchar(255) NOT NULL,
+    Id_P      serial NOT null,
     LastName  varchar(255) NOT NULL,
     FirstName varchar(255),
     Address   varchar(255),

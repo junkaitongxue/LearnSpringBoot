@@ -6,7 +6,7 @@ spring:
   application:
     name: userPg
   profiles:
-    active: testPg
+    active: test
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml

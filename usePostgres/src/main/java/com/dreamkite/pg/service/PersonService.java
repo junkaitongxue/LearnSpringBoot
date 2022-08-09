@@ -20,7 +20,7 @@ public class PersonService {
     }
 
     public void insert(String id, String lastName, String firstName, String address, String city) {
-        personDao.insertPerson(id, lastName, firstName, address, city);
+        personDao.insertPerson(Integer.parseInt(id), lastName, firstName, address, city);
     }
 
     public void delete(String id) {
