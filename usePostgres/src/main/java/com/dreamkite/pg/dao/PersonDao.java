@@ -17,10 +17,10 @@ public interface PersonDao {
     void insertPerson(@Param("id") int id, @Param("lastName") String lastName, @Param("firstName") String firstName,
                       @Param("address") String address, @Param("city") String city);
 
-    void insertPerson1(@Param("lastName") String lastName, @Param("firstName") String firstName,
+    void insertPersonWithoutId(@Param("lastName") String lastName, @Param("firstName") String firstName,
                       @Param("address") String address, @Param("city") String city);
 
-    void batchInsertPerson(List<Person> personList);
+    void batchInsertPerson(@Param("personList") List<Person> personList);
 
     void deletePerson(String id);
 }

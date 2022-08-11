@@ -13,19 +13,20 @@
                 VALUES (#{id}, #{lastName}, #{firstName}, #{address}, #{city})
     </insert>
 
-    <insert id="insertPerson1" useGeneratedKeys="true">
+    <insert id="insertPersonWithoutId" useGeneratedKeys="true" keyProperty="idP" keyColumn="id_p">
         INSERT INTO t_persons (LastName, FirstName, Address, City)
         VALUES (#{lastName}, #{firstName}, #{address}, #{city})
     </insert>
 
-    <insert id="batchInsertPerson" parameterType="list">
+    <insert id="batchInsertPerson" parameterType="list" useGeneratedKeys="true" keyProperty="idP" keyColumn="id_p">
         INSERT INTO t_persons (LastName, FirstName, Address, City)
         VALUES
         <foreach collection="personList" item="item" index="index" separator=",">
             (
-            #{item.lastName}, #{item.firstName}, #{address}, #{city}
+            #{item.lastName}, #{item.firstName}, #{item.address}, #{item.city}
             )
         </foreach>
+        --on conflict (LastName, FirstName) DO nothing;
     </insert>
 
     <select id="queryFirstNameById" resultType="java.lang.String">

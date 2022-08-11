@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS t_persons
     City      varchar(255),
     PRIMARY KEY (Id_P)
 );
+ALTER TABLE t_persons ADD CONSTRAINT unique_name unique(LastName, FirstName);
 COMMENT on table t_persons is 'The persons table';
 
 CREATE TABLE IF NOT EXISTS t_paper
