@@ -31,4 +31,11 @@ class PersonDaoTest {
         personDao.batchInsertPerson(people);
         System.out.println(people);
     }
+
+    @Test
+    void insertUpdatePerson() {
+        Person wangWu = new Person("wang", "wu", "chaoyan", "Beijing");
+        personDao.insertUpdatePerson(wangWu);
+        System.out.println(wangWu);
+    }
 }

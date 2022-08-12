@@ -10,7 +10,22 @@
 
     <insert id="insertPerson">
         INSERT INTO t_persons (Id_P, LastName, FirstName, Address, City)
-                VALUES (#{id}, #{lastName}, #{firstName}, #{address}, #{city})
+        VALUES (#{id}, #{lastName}, #{firstName}, #{address}, #{city})
+    </insert>
+
+    <insert id="insertUpdatePerson" parameterType="com.dreamkite.pg.entity.Person">
+        <selectKey keyProperty='idP' resultType='java.lang.String' order='AFTER'>
+            select Id_P from t_persons
+            where LastName = #{lastName} and FirstName = #{firstName}
+        </selectKey>
+        with "temp" as (
+            update t_persons set Address = #{address}, City = #{city}
+            where LastName = #{lastName} and FirstName = #{firstName}
+            returning *
+        )
+        INSERT INTO t_persons (LastName, FirstName, Address, City)
+        select #{lastName}, #{firstName}, #{address}, #{city}
+        where (select count (*) from temp) = 0
     </insert>
 
     <insert id="insertPersonWithoutId" useGeneratedKeys="true" keyProperty="idP" keyColumn="id_p">

@@ -17,8 +17,10 @@ public interface PersonDao {
     void insertPerson(@Param("id") int id, @Param("lastName") String lastName, @Param("firstName") String firstName,
                       @Param("address") String address, @Param("city") String city);
 
+    void insertUpdatePerson(Person person);
+
     void insertPersonWithoutId(@Param("lastName") String lastName, @Param("firstName") String firstName,
-                      @Param("address") String address, @Param("city") String city);
+                               @Param("address") String address, @Param("city") String city);
 
     void batchInsertPerson(@Param("personList") List<Person> personList);
 
