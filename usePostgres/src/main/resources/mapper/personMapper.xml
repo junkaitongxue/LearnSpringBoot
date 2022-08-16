@@ -13,7 +13,7 @@
         VALUES (#{id}, #{lastName}, #{firstName}, #{address}, #{city})
     </insert>
 
-    <insert id="insertUpdatePerson" parameterType="com.dreamkite.pg.entity.Person">
+    <insert id="insertUpdatePerson">
         <selectKey keyProperty='idP' resultType='java.lang.String' order='AFTER'>
             select Id_P from t_persons
             where LastName = #{lastName} and FirstName = #{firstName}
