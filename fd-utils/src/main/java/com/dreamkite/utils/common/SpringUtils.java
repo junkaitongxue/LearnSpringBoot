@@ -1,4 +1,4 @@
-package com.dreamkite.pg.common;
+package com.dreamkite.utils.common;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

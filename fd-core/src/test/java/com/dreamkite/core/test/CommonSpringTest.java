@@ -1,4 +1,4 @@
-package com.dreamkite.utTestUtils;
+package com.dreamkite.core.test;
 
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.extension.ExtendWith;

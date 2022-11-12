@@ -1,7 +1,7 @@
 package com.dreamkite.utTestUtils;
 
 
-import com.dreamkite.pg.common.SpringUtils;
+import com.dreamkite.utils.common.SpringUtils;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.init.ScriptUtils;
 
