@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: db
+  profiles:
+    active: test

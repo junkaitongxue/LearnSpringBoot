@@ -1,0 +1,16 @@
+spirng:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/learn_db
+    username: admin
+    password: 123456
+    driver-class-name: org.postgresql.Driver
+  sql:
+    #启动时需要初始化的建表语句
+    init:
+      username: admin
+      password: 123456
+      platform: pg
+      schema-locations: classpath:sql/init/createDB-{{platform}}.sql
+      #      mode: always # 如果启动springboot要执行记得开启always， 关闭下面的never
+      mode: NEVER
+      separator: ;

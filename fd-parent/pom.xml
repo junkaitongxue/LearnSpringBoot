@@ -17,6 +17,7 @@
     <modules>
         <module>../fd-utils</module>
         <module>../fd-core</module>
+        <module>../fd-db</module>
     </modules>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -33,6 +34,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-inline</artifactId>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

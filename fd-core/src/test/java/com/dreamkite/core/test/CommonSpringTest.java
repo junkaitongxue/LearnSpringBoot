@@ -13,7 +13,7 @@ import java.lang.reflect.Modifier;
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 @ExtendWith({MockitoExtension.class})
-@ActiveProfiles({"test"})
+@ActiveProfiles({"ut"})
 public class CommonSpringTest {
 
     /**

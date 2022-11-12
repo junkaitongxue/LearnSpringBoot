@@ -7,6 +7,10 @@ spring:
     name: userPg
   profiles:
     active: test
+    group:
+      test: testdb
+      dev: devdb
+      prod: proddb
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
