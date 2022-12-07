@@ -5,6 +5,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -19,6 +21,7 @@ import javax.validation.Valid;
 @Api(value = "一个控制器")
 @RestController
 @Slf4j
+@Validated
 public class AController {
 
 
@@ -62,7 +65,7 @@ public class AController {
      *
      */
     @ApiOperation(value = "测试hiWithModeBody", notes = "测试hiWithModeBody", httpMethod = "POST")
-    @RequestMapping(value = "/hi/model", method = RequestMethod.POST)
+    @RequestMapping(value = "/hi/model", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public String hiWithModeBody(@Valid @RequestBody AModel model) {
         log.info("Start to update " + model.toString());
         return "success";

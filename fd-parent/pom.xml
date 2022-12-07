@@ -18,6 +18,7 @@
         <module>../fd-utils</module>
         <module>../fd-core</module>
         <module>../fd-db</module>
+        <module>../fd-entity</module>
     </modules>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

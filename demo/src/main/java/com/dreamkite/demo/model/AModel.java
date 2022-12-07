@@ -5,9 +5,9 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @ApiModel("一个普通的Web模型对象")
 @Data
@@ -15,10 +15,10 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 public class AModel {
     @ApiModelProperty("模型Id")
-    @NonNull
+    @NotNull
     String id;
 
     @ApiModelProperty("模型名")
-    @NotBlank
+    @NotBlank(message = "名字不能为空")
     String name;
 }

@@ -5,7 +5,7 @@ spring:
 server:
   port: 8080
 
-# 是否停用Knife4j文档
+# 是否停用Knife4j文档, 开启打开链接： http://localhost:8080/doc.html#/home
 knife4j:
   production: false
 
