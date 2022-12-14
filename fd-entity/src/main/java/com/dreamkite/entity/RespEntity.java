@@ -1,4 +1,4 @@
-package com.dreamkite.core.entity;
+package com.dreamkite.entity;
 
 import lombok.Getter;
 import lombok.Setter;
