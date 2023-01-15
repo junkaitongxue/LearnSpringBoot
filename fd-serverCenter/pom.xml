@@ -7,6 +7,7 @@
     <groupId>org.example</groupId>
     <artifactId>fd-server-center</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>serverCenter</name>
 
     <parent>
         <groupId>org.dreamkite</groupId>
@@ -21,10 +22,10 @@
     </properties>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-gateway</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
