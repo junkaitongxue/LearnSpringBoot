@@ -2,4 +2,4 @@ spring:
   application:
     name: db
   profiles:
-    active: test
+    active: testdb
