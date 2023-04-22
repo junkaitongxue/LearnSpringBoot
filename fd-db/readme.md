@@ -51,3 +51,55 @@ $sort： 将输入文档排序后输出。
 
 # 事务
 复制集？
+
+
+
+# springboot整合mongodb MongoTemplate和MongoRepository的用法
+除了直接使用MongoTemplate，我们通常会写一个接口继承MongoRepository接口，并且不需要实现该接口就可操作数据库。
+Repository 提供了最基本的数据访问功能，其几个子接口则扩展了一些功能。它们的继承关系如下：
+```
+Repository： 仅仅是一个标识，表明任何继承它的均为仓库接口类
+CrudRepository： 继承 Repository，实现了一组 CRUD 相关的方法
+PagingAndSortingRepository： 继承 CrudRepository，实现了一组分页排序相关的方法
+MongoRepository： 继承 PagingAndSortingRepository，实现一组 mongodb规范相关的方法
+```
+MongoRepository_SPRING操作MONGODB之SPRING黑科技,采用继承MONGOREPOSITORY接口实现
+
+MongoTemplate
+
+
+https://blog.csdn.net/u010797364/article/details/120484002
+
+
+# Spring boot MongoDB多数据源，MongoRepository实现
+https://www.cnblogs.com/kelelipeng/p/13329765.html
+
+
+# 删除MongoDB列表某项/数组某项
+pull是删除内嵌数组项，upset是删除内嵌键值
+关键命令一: $pull、update.pull
+The $pull operator removes from an existing array all instances of a value or values that match a specified condition.
+它用于删除数组所匹配的项，如果数组[1,1,2,1] 执行pull 1 后，只剩下[2]
+
+关键命令二: $upset、update.upset
+($unset运算符删除特定字段。请考虑以下语法：)
+The $unset operator deletes a particular field. Consider the following syntax: copycopied
+{ $unset: { <“field1”>: “”, … } }
+原文链接：https://blog.csdn.net/zhan107876/article/details/106257981
+
+
+# DBREF和手动引用（MANUAL REFERENCES
+https://www.freesion.com/article/25851190359/
+
+# 关联 $lookup
+todo
+
+
+
+# 一些报错
+## Invalid path reference pets.name! Associations can only be pointed to directly or via their id property!
+使用了@DBRef时，不能根据其里面的属性进行查询，
+https://blog.csdn.net/fenyuduanchangren/article/details/77688842
+
+
+
