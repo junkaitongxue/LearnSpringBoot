@@ -13,6 +13,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.CriteriaDefinition;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -207,9 +208,34 @@ class PersonRepositoryTest {
 
     @Test
     @DisplayName("数组中追加引用")
-    // todo
     void testCoexist2() {
-        
+        Pet pet = new Pet();
+        pet.setName("dog");
+        Pet pet1 = petRepository.save(pet);// 注意这里有个坑， 返回值的pet1跟入参其实是同个对象，如果对pet1进行修改入参也会改的
+
+        CriteriaDefinition criteria = Criteria.where("_id").is("64437bdb46e7bf2bcbda2ee3");
+        Query query = new Query(criteria);
+
+        Update update = new Update().addToSet("pets", pet);
+
+        // 如果要追加数据引入千万不要怎么写 mongoTemplate.updateMulti(query, update, "Person")，因为感知不到引用关系，则需要传Person.class
+        UpdateResult updateResult = mongoTemplate.updateMulti(query, update, Person.class);//
+        log.info("{}-{}-{}", updateResult.getMatchedCount(), updateResult.getModifiedCount(), updateResult.getUpsertedId());
     }
 
+
+    @Test
+    @DisplayName("【更新】删除集合中一个数组的某个元素： pull， 删除Db引用")
+    void testPull2() {
+        Pet pet = new Pet();
+        pet.setId("64437bdb46e7bf2bcbda2ee2");// 主要就是要根据id作为唯一性片段
+
+        CriteriaDefinition criteria = Criteria.where("_id").is("64437bdb46e7bf2bcbda2ee3");
+        Query query = new Query(criteria);
+
+        Update update = new Update().pull("pets", pet);
+        UpdateResult updateResult = mongoTemplate.updateMulti(query, update, "Person");
+        petRepository.deleteById("64437bdb46e7bf2bcbda2ee2"); // 先删除引入的地方，再删除源头的数据，顺序不能乱
+        log.info("{}-{}-{}", updateResult.getMatchedCount(), updateResult.getModifiedCount(), updateResult.getUpsertedId());
+    }
 }

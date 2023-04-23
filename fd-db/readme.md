@@ -50,8 +50,8 @@ $group： 将集合中的文档分组，可用于统计结果。
 $sort： 将输入文档排序后输出。
 
 # 事务
-复制集？
-
+事物只支持复制集， 单机部署的mongo是没法使用事务的
+默认的@Transactional是对数据库的写操作进行锁定的，如果一个事务对表1写入10M数据，再对表2写入10M数据，就超过16M了，就会导致报错~~
 
 
 # springboot整合mongodb MongoTemplate和MongoRepository的用法
