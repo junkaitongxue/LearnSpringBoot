@@ -2,6 +2,7 @@ package com.dreamkite.db.service.mongo.usage.repo;
 
 import com.dreamkite.db.service.mongo.usage.po.Person;
 import com.dreamkite.db.service.mongo.usage.po.Pet;
+import com.dreamkite.db.service.mongo.usage.po.PetDetail;
 import com.mongodb.client.result.UpdateResult;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
@@ -236,6 +237,59 @@ class PersonRepositoryTest {
         Update update = new Update().pull("pets", pet);
         UpdateResult updateResult = mongoTemplate.updateMulti(query, update, "Person");
         petRepository.deleteById("64437bdb46e7bf2bcbda2ee2"); // 先删除引入的地方，再删除源头的数据，顺序不能乱
+        log.info("{}-{}-{}", updateResult.getMatchedCount(), updateResult.getModifiedCount(), updateResult.getUpsertedId());
+    }
+
+    @Test
+    @DisplayName("引用的方式插入： 如果插入后把表pet的数据删了之后要同步删除，不然person的pet列表中引用的那个查出来会是个null， 嵌套层级>1")
+    void insert02() {
+        Pet pet = new Pet();
+        pet.setName("ant");
+        petRepository.save(pet);
+
+        Person person = new Person();
+        person.setName("jk");
+
+        PetDetail petDetail = new PetDetail();
+        petDetail.setPets(Arrays.asList(pet));
+        person.setPetDetail(petDetail);
+
+        System.out.println(personRepository.insert(person));
+    }
+
+    @Test
+    @DisplayName("数组中追加引用， 嵌套层级>1, ")
+    void testAddToSet() {
+        Pet pet = new Pet();
+        pet.setName("ant");
+        petRepository.save(pet);// 注意这里有个坑， 返回值的pet1跟入参其实是同个对象，如果对pet1进行修改入参也会改的
+        System.out.println(pet.getId());
+
+        CriteriaDefinition criteria = Criteria.where("_id").is("6447f397153efc7858e105bb");
+        Query query = new Query(criteria);
+
+        Update update = new Update().addToSet("DETAIL.pets", pet);
+
+        // 如果要追加数据引入千万不要怎么写 mongoTemplate.updateMulti(query, update, "Person")，因为感知不到引用关系，则需要传Person.class
+        UpdateResult updateResult = mongoTemplate.updateMulti(query, update, Person.class);//
+        log.info("{}-{}-{}", updateResult.getMatchedCount(), updateResult.getModifiedCount(), updateResult.getUpsertedId());
+    }
+
+    @Test
+    @DisplayName("数组中追加引用， 嵌套层级>1, 字段名和Field名一样: detail")
+    // 对@DBRef的字段进行多层嵌套的话，函数addToSet的该key值承载的是属性名的索引!!!
+    void testAddToSet1() {
+        Pet pet = new Pet();
+        pet.setName("ant");
+        petRepository.save(pet);// 注意这里有个坑， 返回值的pet1跟入参其实是同个对象，如果对pet1进行修改入参也会改的
+
+        CriteriaDefinition criteria = Criteria.where("_id").is("6447f397153efc7858e105bb");
+        Query query = new Query(criteria);
+
+        Update update = new Update().addToSet("petDetail.pets", pet);
+
+        // 如果要追加数据引入千万不要怎么写 mongoTemplate.updateMulti(query, update, "Person")，因为感知不到引用关系，则需要传Person.class
+        UpdateResult updateResult = mongoTemplate.updateMulti(query, update, Person.class);//
         log.info("{}-{}-{}", updateResult.getMatchedCount(), updateResult.getModifiedCount(), updateResult.getUpsertedId());
     }
 }
