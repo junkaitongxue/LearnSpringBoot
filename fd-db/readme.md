@@ -92,14 +92,31 @@ The $unset operator deletes a particular field. Consider the following syntax: c
 https://www.freesion.com/article/25851190359/
 
 # 关联 $lookup
-todo
+https://juejin.cn/post/6970242759714144264
+https://blog.csdn.net/H900302/article/details/119237044
 
+# mongo批量插入问题
+设置了唯一键 唯一键异常 批量插入中间出现异常 后面数据会发生什么？？？
+异常发生, 后面数据就不再插入,唯一键异常下面可以捕获MongoBulkWriteException
 
+如果我想抛出异常 不影响后面数据执行 可不可以 mongo这么吊,当然可以 BulkMode.UNORDERED:表示并行处理 有异常就不会影响其他
+```
+    BulkOperations ops = mongoTemplate.bulkOps(BulkOperations.BulkMode.UNORDERED, "scrm_clues_pool");
+    ops.insert(poolList);
+    // 执行操作
+    // ops.execute();
+```
 
 # 一些报错
 ## Invalid path reference pets.name! Associations can only be pointed to directly or via their id property!
 使用了@DBRef时，不能根据其里面的属性进行查询，
 https://blog.csdn.net/fenyuduanchangren/article/details/77688842
+
+# 关键的手册型链接
+- [MongoDB中文手册|官方文档中文版](https://docs.mongoing.com/)
+- [Spring Data MongoDB 中文文档](https://springdoc.cn/spring-data-mongodb/#preface)
+- 
+
 
 
 

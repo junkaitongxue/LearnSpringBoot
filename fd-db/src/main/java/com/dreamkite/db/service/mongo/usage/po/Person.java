@@ -22,8 +22,6 @@ public class Person {
     private List<Pet> pets;
 
     @Field("DETAIL")
-//    @Property(name="DETAIL")
-//    @Property(name="DETAIL")
     private PetDetail petDetail;
 
     private String collectionName;
