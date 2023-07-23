@@ -3,6 +3,10 @@ spring:
     name: demo
   profiles:
     active: test
+    group:
+      test: testdb
+      dev: devdb
+      prod: proddb
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
@@ -18,17 +22,25 @@ knife4j:
 logging:
   level:
     root: info
----
-spring:
-  profiles:dev
 
-
----
-spring:
-  profiles:test
-
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.dreamkite.demo.model.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    call-setters-on-nulls: true
 
 ---
 spring:
-  profiles:prod
+  profiles: dev
+
+
+---
+spring:
+  profiles: test
+
+
+---
+spring:
+  profiles: prod
 

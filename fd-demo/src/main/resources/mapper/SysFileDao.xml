@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dreamkite.demo.repo.dao.SysFileDao">
+
+    <insert id="uploadImageFile">
+        INSERT INTO public.sys_image
+            (id, "name", "content")
+        VALUES (#{id}, #{name}, #{content})
+    </insert>
+
+    <select id="getImageFile" resultType="com.dreamkite.demo.model.entity.ImageEntity">
+        SELECT id, "name", "content"
+        FROM sys_image
+        where id = #{id}
+    </select>
+</mapper>

@@ -10,7 +10,7 @@ public final class JsonUtils {
 
     }
 
-    private static ObjectMapper OBJECT_MAPPER = SpringUtils.getBean(ObjectMapper.class);
+    private static final ObjectMapper OBJECT_MAPPER = SpringUtils.getBean(ObjectMapper.class);
 
     public static String jsonToStr(Object obj) {
         try {
