@@ -14,8 +14,6 @@ public class MongoFilter implements TypeFilter {
 
     @Override
     public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory) {
-        return metadataReader.getClassMetadata().getClassName().startsWith(PACKAGE)
-                // TODO(临时屏蔽)
-                || metadataReader.getClassMetadata().getClassName().equals("com.dreamkite.db.DbApplication");
+        return metadataReader.getClassMetadata().getClassName().startsWith(PACKAGE);
     }
 }
