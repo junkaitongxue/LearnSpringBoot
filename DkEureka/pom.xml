@@ -71,7 +71,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.3.7.RELEASE</version>
                 <configuration>
-                    <mainClass>com.dreamkite.demo.MyeurekaApplication</mainClass>
+                    <mainClass>org.dreamkite.demo.MyeurekaApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>
